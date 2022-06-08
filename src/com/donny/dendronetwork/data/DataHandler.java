@@ -64,6 +64,8 @@ public class DataHandler {
 
     //TODO data sets deleters
 
+    //TODO TraceRt and Cache handling
+
     public ArrayList<NodeEntry> readNodes() {
         try {
             return NODES.read();

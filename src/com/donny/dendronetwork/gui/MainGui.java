@@ -9,7 +9,7 @@ public class MainGui extends JFrame {
     public final ArrayList<RegisterFrame> FRAME_REGISTRY;
 
     public MainGui() {
-        super();
+        super("Dendrogram Network");
         FRAME_REGISTRY = new ArrayList<>();
 
         //draw gui
