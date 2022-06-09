@@ -2,6 +2,7 @@ package com.donny.dendronetwork.ltree;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.Random;
 
@@ -60,11 +61,7 @@ public class TraversalTree<E> {
                 }
                 if (bad != null) {
                     node.CHILDREN.remove(badId);
-                    if (node.CHILDREN.size() < 1) {
-                        prune(node);
-                    } else {
-                        return true;
-                    }
+                    return true;
                 } else {
                     return false;
                 }
@@ -91,11 +88,25 @@ public class TraversalTree<E> {
         }
     }
 
+    public TreeNode<E> get(String path) {
+        return get(new ArrayList<>(Arrays.asList(path.split("\\."))));
+    }
+
     public TreeNode<E> find(E check) {
         if (HEAD.CONTENT.equals(check)) {
             return HEAD;
         } else {
             return HEAD.find(check);
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder("{");
+        for (String path : HEAD.getAllPaths()) {
+            builder.append("\n  ").append(path);
+        }
+        builder.append("\n}");
+        return builder.toString();
     }
 }

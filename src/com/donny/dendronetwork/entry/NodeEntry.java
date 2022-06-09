@@ -1,51 +1,31 @@
 package com.donny.dendronetwork.entry;
 
-import com.donny.dendronetwork.DendroNetwork;
 import com.donny.dendronetwork.data.ImportHandler;
 import com.donny.dendronetwork.json.*;
-import com.donny.dendronetwork.util.ExportableToJson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class NodeEntry extends Entry {
-    public record RoutingTableEntry(NodeEntry DST, ConnectionEntry RT) implements ExportableToJson {
-        public RoutingTableEntry(JsonObject object) {
-            this(
-                    DendroNetwork.DATA_HANDLER.getNode(object.getDecimal("dst").decimal.longValue()),
-                    DendroNetwork.DATA_HANDLER.getConnection(object.getDecimal("rt").decimal.longValue())
-            );
-        }
-
-        @Override
-        public JsonItem export() {
-            JsonObject object = new JsonObject();
-            object.put("dst", new JsonDecimal(DST.getUUID()));
-            object.put("rt", new JsonDecimal(RT.getUUID()));
-            return object;
-        }
-
-        @Override
-        public String toString() {
-            return "{" + DST.getName() + ", " + RT.getName() + "}";
-        }
-    }
-
     private final String NAME;
-    private final ArrayList<RoutingTableEntry> ROUTING_TABLE;
+    private final HashMap<Long, Long> ROUTING_TABLE;
     private final ArrayList<ConnectionEntry> CONNECTIONS;
 
     public NodeEntry(String name) {
         super();
         NAME = name;
-        ROUTING_TABLE = new ArrayList<>();
+        ROUTING_TABLE = new HashMap<>();
         CONNECTIONS = new ArrayList<>();
     }
 
     public NodeEntry(JsonObject object, ImportHandler.ImportMode mode) {
         super(object, mode);
         NAME = object.getString("name").getString();
-        ROUTING_TABLE = new ArrayList<>();
-        object.getArray("rt-tbl").getObjectArray().forEach(obj -> ROUTING_TABLE.add(new RoutingTableEntry(obj)));
+        ROUTING_TABLE = new HashMap<>();
+        object.getArray("rt-tbl").getObjectArray().forEach(obj -> ROUTING_TABLE.put(
+                obj.getDecimal("dst").decimal.longValue(),
+                obj.getDecimal("rt").decimal.longValue()
+        ));
         CONNECTIONS = new ArrayList<>();
     }
 
@@ -53,17 +33,23 @@ public class NodeEntry extends Entry {
         return NAME;
     }
 
+    public void flushCache() {
+        ROUTING_TABLE.clear();
+    }
+
     public ConnectionEntry route(NodeEntry dst) throws LoopBackException {
         if (dst.equals(this)) {
             throw new LoopBackException();
         } else {
-            for (RoutingTableEntry entry : ROUTING_TABLE) {
-                if (entry.DST.equals(dst)) {
-                    return entry.RT;
+            Long uuid = ROUTING_TABLE.get(dst.getUUID());
+            if (uuid != null) {
+                for (ConnectionEntry entry : getConnections()) {
+                    if (entry.getOpposite(this).getUUID() == uuid) {
+                        return entry;
+                    }
                 }
             }
             return null;
-            //TODO code to find shortest route if not cached
         }
     }
 
@@ -80,8 +66,11 @@ public class NodeEntry extends Entry {
         JsonObject object = super.export();
         object.put("name", new JsonString(NAME));
         JsonArray array = new JsonArray();
-        for (RoutingTableEntry entry : ROUTING_TABLE) {
-            array.add(entry.export());
+        for (long dst : ROUTING_TABLE.keySet()) {
+            JsonObject rt = new JsonObject();
+            rt.put("dst", new JsonDecimal(dst));
+            rt.put("rt", new JsonDecimal(ROUTING_TABLE.get(dst)));
+            array.add(rt);
         }
         object.put("rt-tbl", array);
         return object;
@@ -92,7 +81,7 @@ public class NodeEntry extends Entry {
         StringBuilder builder = new StringBuilder();
         builder.append(getUUID()).append("\t{")
                 .append(NAME);
-        ROUTING_TABLE.forEach(entry -> builder.append(entry).append(", "));
+        ROUTING_TABLE.forEach((dst, dir) -> builder.append(dst).append(":").append(dir).append(", "));
         builder.append("}");
         return builder.toString().replace(", }", "}");
     }

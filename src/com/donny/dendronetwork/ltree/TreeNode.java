@@ -1,5 +1,7 @@
 package com.donny.dendronetwork.ltree;
 
+import com.donny.dendronetwork.entry.LoopBackException;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +37,13 @@ public class TreeNode<E> {
         return new ArrayList<>(CHILDREN.keySet());
     }
 
+    public ArrayList<String> getAllPaths() {
+        ArrayList<String> paths = new ArrayList<>();
+        paths.add(getPathAsString());
+        CHILDREN.forEach((key, sNode) -> paths.add(sNode.NODE.getPathAsString()));
+        return paths;
+    }
+
     public boolean matchesContents(TreeNode<E> b) {
         return CONTENT.equals(b.CONTENT);
     }
@@ -60,7 +69,10 @@ public class TreeNode<E> {
         return null;
     }
 
-    public E getDirection(E endPoint) {
+    public E getDirection(E endPoint) throws LoopBackException {
+        if (CONTENT.equals(endPoint)) {
+            throw new LoopBackException();
+        }
         for (SubNode<E> child : CHILDREN.values()) {
             if (child.NODE.find(endPoint) != null) {
                 return child.NODE.CONTENT;
@@ -82,6 +94,14 @@ public class TreeNode<E> {
             out.add(stack.pop());
         }
         return out;
+    }
+
+    public String getPathAsString() {
+        StringBuilder builder = new StringBuilder();
+        for (String s : getPath()) {
+            builder.append(s).append(".");
+        }
+        return builder.substring(0, builder.length() - 1);
     }
 
     public BigDecimal getTotalCost() {

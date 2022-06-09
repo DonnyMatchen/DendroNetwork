@@ -13,7 +13,7 @@
           {
             "key": "ColorChooser.font",
             "class": "class java.awt.Font",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "ColorChooser.foreground",
@@ -453,7 +453,7 @@
           {
             "key": "Panel.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "Panel.foreground",
@@ -493,7 +493,7 @@
           {
             "key": "PopupMenu.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "PopupMenu.foreground",
@@ -693,7 +693,7 @@
           {
             "key": "TabbedPane.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "TabbedPane.foreground",
@@ -798,7 +798,7 @@
           {
             "key": "TitledBorder.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "TitledBorder.titleColor",
@@ -833,7 +833,7 @@
           {
             "key": "ToolTip.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "ToolTip.foreground",
@@ -918,7 +918,7 @@
           {
             "key": "CheckBoxMenuItem.font",
             "class": "class java.awt.Font",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "CheckBoxMenuItem.foreground",
@@ -1008,7 +1008,7 @@
           {
             "key": "Menu.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "Menu.foreground",
@@ -1093,7 +1093,7 @@
           {
             "key": "MenuBar.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "MenuBar.foreground",
@@ -1183,7 +1183,7 @@
           {
             "key": "MenuItem.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "MenuItem.foreground",
@@ -1263,7 +1263,7 @@
           {
             "key": "RadioButtonMenuItem.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "RadioButtonMenuItem.foreground",
@@ -1368,7 +1368,7 @@
           {
             "key": "ToolBar.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "ToolBar.foreground",
@@ -1468,7 +1468,7 @@
           {
             "key": "Button.font",
             "class": "class java.awt.Font",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "Button.foreground",
@@ -1563,7 +1563,7 @@
           {
             "key": "CheckBox.font",
             "class": "class java.awt.Font",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "CheckBox.foreground",
@@ -1663,7 +1663,7 @@
           {
             "key": "ComboBox.font",
             "class": "class java.awt.Font",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "ComboBox.foreground",
@@ -1728,7 +1728,7 @@
           {
             "key": "EditorPane.font",
             "class": "class java.awt.Font",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "EditorPane.foreground",
@@ -1788,7 +1788,7 @@
           {
             "key": "FormattedTextField.font",
             "class": "class java.awt.Font",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "FormattedTextField.foreground",
@@ -1843,7 +1843,7 @@
           {
             "key": "Label.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "Label.foreground",
@@ -1898,7 +1898,7 @@
           {
             "key": "List.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "List.foreground",
@@ -2033,7 +2033,7 @@
           {
             "key": "ProgressBar.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "ProgressBar.foreground",
@@ -2103,7 +2103,7 @@
           {
             "key": "RadioButton.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "RadioButton.foreground",
@@ -2198,7 +2198,7 @@
           {
             "key": "ScrollPane.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "ScrollPane.foreground",
@@ -2308,7 +2308,7 @@
           {
             "key": "Viewport.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "Viewport.foreground",
@@ -2358,7 +2358,7 @@
           {
             "key": "Slider.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "Slider.foreground",
@@ -2478,7 +2478,7 @@
           {
             "key": "Spinner.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "Spinner.foreground",
@@ -2553,7 +2553,7 @@
           {
             "key": "Table.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "Table.foreground",
@@ -2613,7 +2613,7 @@
           {
             "key": "TableHeader.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "TableHeader.foreground",
@@ -2658,7 +2658,7 @@
           {
             "key": "TextArea.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "TextArea.foreground",
@@ -2728,7 +2728,7 @@
           {
             "key": "TextField.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "TextField.foreground",
@@ -2808,7 +2808,7 @@
           {
             "key": "TextPane.font",
             "class": "class javax.swing.plaf.FontUIResource",
-            "value": "UNIFONT"
+            "value": "VERDANA"
           },
           {
             "key": "TextPane.foreground",

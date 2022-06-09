@@ -15,7 +15,7 @@ public class DendroNetwork {
     public static File data;
     public static LogHandler.LogLevel logLevel;
 
-    static{
+    static {
         LOG_HANDLER = new LogHandler();
         FILE_HANDLER = new FileHandler();
         UUID_HANDLER = new UuidHandler();

@@ -27,7 +27,7 @@ public class DendroFactory {
     public static final int SMALL_GAP = 5;
     public static final int MEDIUM_GAP = 10;
     public static final int LARGE_GAP = 15;
-    public static Font unifont, verdana;
+    public static Font verdana;
 
     private static void setUI(JsonArray objects) {
         for (JsonObject obj : objects.getObjectArray()) {
@@ -54,7 +54,6 @@ public class DendroFactory {
             case "CARET" -> CARET;
             case "PANEL_BORDER" -> PANEL_BORDER;
             case "CONTENT_BORDER" -> CONTENT_BORDER;
-            case "UNIFONT" -> unifont;
             case "VERDANA" -> verdana;
             default -> null;
         };
@@ -63,13 +62,9 @@ public class DendroFactory {
     public static void init() {
         try {
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            InputStream file = DendroFactory.class.getResourceAsStream("/com/donny/dendronetwork/resources/unifont.ttf");
+            InputStream file = DendroFactory.class.getResourceAsStream("/com/donny/dendronetwork/resources/verdana.ttf");
             Font font = Font.createFont(Font.TRUETYPE_FONT, file).deriveFont(15f);
             ge.registerFont(font);
-            file = DendroFactory.class.getResourceAsStream("/com/donny/dendronetwork/resources/verdana.ttf");
-            font = Font.createFont(Font.TRUETYPE_FONT, file).deriveFont(15f);
-            ge.registerFont(font);
-            unifont = new Font("Unifont", Font.PLAIN, 15);
             verdana = new Font("Verdana", Font.PLAIN, 15);
             JsonItem ui = JsonItem.sanitizeDigest(new String(DendroNetwork.FILE_HANDLER.getResource("ui.json"), StandardCharsets.US_ASCII));
             setUI((JsonArray) ui);

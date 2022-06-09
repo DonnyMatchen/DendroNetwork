@@ -51,6 +51,17 @@ public class ConnectionEntry extends Entry {
         return DISTANCE;
     }
 
+    public NodeEntry getOpposite(NodeEntry entry) {
+        if (NODES.contains(entry)) {
+            for (NodeEntry node : NODES) {
+                if (!node.equals(entry)) {
+                    return node;
+                }
+            }
+        }
+        return null;
+    }
+
     @Override
     public JsonObject export() throws JsonFormattingException {
         JsonObject object = super.export();
