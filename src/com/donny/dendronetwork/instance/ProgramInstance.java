@@ -10,7 +10,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ProgramInstance extends Instance{
+public class ProgramInstance extends Instance {
     public final HashMap<String, LNetwork> NETWORKS;
     public final HashMap<String, LNode> ALL_NODES;
     public final ArrayList<LConnection> ALL_CONNECTIONS;

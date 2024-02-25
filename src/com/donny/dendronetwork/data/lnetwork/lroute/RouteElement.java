@@ -14,6 +14,7 @@ public class RouteElement {
         NODE = node;
         COST = BigDecimal.ZERO;
     }
+
     public RouteElement(LNode node, BigDecimal cost) {
         FIRST = false;
         NODE = node;

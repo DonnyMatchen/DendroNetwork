@@ -1,6 +1,5 @@
 package com.donny.dendronetwork.data;
 
-import com.donny.dendronetwork.DendroNetwork;
 import com.donny.dendronetwork.instance.ProgramInstance;
 
 public class DataHandler {

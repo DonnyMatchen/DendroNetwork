@@ -1,6 +1,5 @@
 package com.donny.dendronetwork.data.lnetwork;
 
-import com.donny.dendronetwork.DendroNetwork;
 import com.donny.dendronetwork.data.lnetwork.exceptions.LoopBackException;
 import com.donny.dendronetwork.data.lnetwork.ltree.TraversalTree;
 import com.donny.dendronetwork.data.lnetwork.ltree.TreeNode;
@@ -16,7 +15,7 @@ public class LNetwork implements Comparable<LNetwork> {
     private final HashMap<String, LNode> NODES;
 
     public LNetwork(String name, ProgramInstance instance) {
-        if(name.contains(".")) {
+        if (name.contains(".")) {
             throw new IllegalArgumentException("Network names cannot have a period!");
         }
         NAME = name;
@@ -30,17 +29,17 @@ public class LNetwork implements Comparable<LNetwork> {
      */
 
     public boolean containsNode(String nodeId) {
-        if(nodeId.contains(".")) {
+        if (nodeId.contains(".")) {
             nodeId = nodeId.split("\\.")[1];
         }
         return NODES.containsKey(nodeId);
     }
 
     public boolean hasConnection(String nodeA, String nodeB) {
-        if(nodeA.contains(".")) {
+        if (nodeA.contains(".")) {
             nodeA = nodeA.split("\\.")[1];
         }
-        if(nodeB.contains(".")) {
+        if (nodeB.contains(".")) {
             nodeB = nodeA.split("\\.")[1];
         }
         return getNode(nodeA).connectedTo(getNode(nodeB));
@@ -51,7 +50,7 @@ public class LNetwork implements Comparable<LNetwork> {
      */
 
     public boolean addNode(String nodeId, String desc) {
-        if(containsNode(nodeId)) {
+        if (containsNode(nodeId)) {
             CURRENT_INSTANCE.LOG_HANDLER.error(getClass(), "There is already a node in this network with name: " + nodeId);
         } else {
             NODES.put(nodeId, new LNode(nodeId, desc, this, CURRENT_INSTANCE));
@@ -74,7 +73,7 @@ public class LNetwork implements Comparable<LNetwork> {
     }
 
     public boolean addConnection(String nodeA, String nodeB, BigDecimal cost) {
-        if(containsNode(nodeA) && containsNode(nodeB)) {
+        if (containsNode(nodeA) && containsNode(nodeB)) {
             return addConnection(getNode(nodeA), getNode(nodeB), cost);
         } else {
             return false;
@@ -82,7 +81,7 @@ public class LNetwork implements Comparable<LNetwork> {
     }
 
     public boolean addConnection(String nodeA, String nodeB) {
-        if(containsNode(nodeA) && containsNode(nodeB)) {
+        if (containsNode(nodeA) && containsNode(nodeB)) {
             return addConnection(getNode(nodeA), getNode(nodeB));
         } else {
             return false;
@@ -98,7 +97,7 @@ public class LNetwork implements Comparable<LNetwork> {
     }
 
     public LNode getNode(String nodeId) {
-        if(nodeId.contains(".")) {
+        if (nodeId.contains(".")) {
             nodeId = nodeId.split("\\.")[1];
         }
         return NODES.get(nodeId);

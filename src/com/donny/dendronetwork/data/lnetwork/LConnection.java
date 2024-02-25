@@ -1,6 +1,5 @@
 package com.donny.dendronetwork.data.lnetwork;
 
-import com.donny.dendronetwork.DendroNetwork;
 import com.donny.dendronetwork.instance.ProgramInstance;
 import com.donny.dendroroot.json.*;
 import com.donny.dendroroot.util.ExportableToJson;
@@ -21,6 +20,7 @@ public class LConnection implements ExportableToJson {
         active = true;
         instance.ALL_CONNECTIONS.add(this);
     }
+
     public LConnection(LNetwork network, LNode a, LNode b, ProgramInstance instance) {
         this(BigDecimal.ONE, network, a, b, instance);
     }
@@ -55,9 +55,9 @@ public class LConnection implements ExportableToJson {
     }
 
     public LNode traverse(LNode node) {
-        if(A == node) {
+        if (A == node) {
             return B;
-        } else if(B == node) {
+        } else if (B == node) {
             return A;
         } else {
             return null;

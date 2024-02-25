@@ -1,6 +1,5 @@
 package com.donny.dendronetwork.data.lnetwork;
 
-import com.donny.dendronetwork.DendroNetwork;
 import com.donny.dendronetwork.data.lnetwork.exceptions.DestinationUnreachableException;
 import com.donny.dendronetwork.data.lnetwork.exceptions.LoopBackException;
 import com.donny.dendronetwork.instance.ProgramInstance;
@@ -22,7 +21,7 @@ public class LNode implements Comparable<LNode>, ExportableToJson, Identifiable<
     private String description;
 
     protected LNode(String name, String desc, LNetwork network, ProgramInstance instance) {
-        if(name.contains(".")) {
+        if (name.contains(".")) {
             throw new IllegalArgumentException("Node names cannot have a period!");
         }
         NAME = name;
@@ -54,22 +53,22 @@ public class LNode implements Comparable<LNode>, ExportableToJson, Identifiable<
     }
 
     public void loadRoutes(JsonObject object) {
-        for(String s : object.getFields()) {
+        for (String s : object.getFields()) {
             ROUTING_TABLE.put(s, object.getString(s).getString());
         }
     }
 
     protected boolean connect(LConnection con) {
         LConnection old = getConnection(con.traverse(this));
-        if(old != null) {
+        if (old != null) {
             CONNECTIONS.remove(old);
         }
         return CONNECTIONS.add(con);
     }
 
     public boolean connectedTo(LNode node) {
-        for(LConnection con : CONNECTIONS) {
-            if(con.traverse(this) == node) {
+        for (LConnection con : CONNECTIONS) {
+            if (con.traverse(this) == node) {
                 return true;
             }
         }
@@ -77,8 +76,8 @@ public class LNode implements Comparable<LNode>, ExportableToJson, Identifiable<
     }
 
     public LConnection getConnection(LNode node) {
-        for(LConnection con : CONNECTIONS) {
-            if(con.traverse(this) == node) {
+        for (LConnection con : CONNECTIONS) {
+            if (con.traverse(this) == node) {
                 return con;
             }
         }
@@ -86,8 +85,8 @@ public class LNode implements Comparable<LNode>, ExportableToJson, Identifiable<
     }
 
     public LConnection getConnection(String nodId) {
-        for(LConnection con : CONNECTIONS) {
-            if(con.traverse(this).NAME.equals(nodId)) {
+        for (LConnection con : CONNECTIONS) {
+            if (con.traverse(this).NAME.equals(nodId)) {
                 return con;
             }
         }
@@ -109,7 +108,7 @@ public class LNode implements Comparable<LNode>, ExportableToJson, Identifiable<
             ArrayList<LConnection> list;
             if (!ROUTING_TABLE.containsKey(dst.NAME)) {
                 NETWORK.rebuildRoutingTable(this);
-                if(!ROUTING_TABLE.containsKey(dst.NAME)) {
+                if (!ROUTING_TABLE.containsKey(dst.NAME)) {
                     throw new DestinationUnreachableException();
                 }
             }
@@ -124,7 +123,7 @@ public class LNode implements Comparable<LNode>, ExportableToJson, Identifiable<
 
     public JsonObject exportRoutes() throws JsonFormattingException {
         JsonObject routes = new JsonObject();
-        for(String s : ROUTING_TABLE.keySet()) {
+        for (String s : ROUTING_TABLE.keySet()) {
             routes.put(s, new JsonString(ROUTING_TABLE.get(s)));
         }
         return routes;
