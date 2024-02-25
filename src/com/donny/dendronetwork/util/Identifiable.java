@@ -1,7 +1,8 @@
 package com.donny.dendronetwork.util;
 
-import com.donny.dendronetwork.json.JsonItem;
+import com.donny.dendroroot.json.JsonFormattingException;
+import com.donny.dendroroot.json.JsonItem;
 
-public interface Identifiable<E extends JsonItem> {
+public interface Identifiable<E> {
     E getIdentifier();
 }

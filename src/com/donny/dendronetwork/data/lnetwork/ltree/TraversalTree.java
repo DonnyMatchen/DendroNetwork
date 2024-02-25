@@ -1,4 +1,4 @@
-package com.donny.dendronetwork.ltree;
+package com.donny.dendronetwork.data.lnetwork.ltree;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
-package com.donny.dendronetwork.ltree;
+package com.donny.dendronetwork.data.lnetwork.ltree;
 
-import com.donny.dendronetwork.entry.LoopBackException;
+import com.donny.dendronetwork.data.lnetwork.exceptions.LoopBackException;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class TreeNode<E> {
     }
 
     public TreeNode<E> find(E check) {
-        if (CHILDREN.size() > 0) {
+        if (!CHILDREN.isEmpty()) {
             for (SubNode<E> child : CHILDREN.values()) {
                 if (child.NODE.CONTENT.equals(check)) {
                     return child.NODE;
